@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="robot.js"></script>
+    <title>Lovestock & Leaf</title>
+  </head>
+  <body>
+    <div style="display: flex; flex-flow: column; gap: 15px">
+      <div>Question 1: password is "moo pwns"</div>
+      <div style="display: flex; flex-flow: row; gap: 15px">
+        <p>Question 2</p>
+        <div>
+          <div>
+            <textarea name="input" id="input" cols="30" rows="10"></textarea>
+          </div>
+          <div>
+            <button name="check" id="check">Check</button>
+            <p name="result" id="result"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script type="text/javascript">
+    function runTest() {
+      const testcases = document.getElementById("input").value;
+      if (!testcases) return;
+      const lines = testcases.split(/\r\n|\r|\n/);
+      const numberOfTestCases = parseInt(lines[0]);
+      const result = [];
+      for (let i = 1; i <= numberOfTestCases; i++) {
+        result.push(`Case #${i}: ${runTestcase(lines[i])}`);
+      }
+      document.getElementById("result").innerText = result.join("\n");
+    }
+    document.getElementById("check").addEventListener("click", runTest);
+  </script>
+</html>
